@@ -1,12 +1,88 @@
-import { FlatCompat } from '@eslint/eslintrc'
-import { fileURLToPath } from 'node:url'
-import path from 'node:path'
+import js from '@eslint/js'
+import prettierConfig from 'eslint-config-prettier'
+import importPlugin from 'eslint-plugin-import'
+import prettier from 'eslint-plugin-prettier'
+import unicorn from 'eslint-plugin-unicorn'
+import globals from 'globals'
+import ts from 'typescript-eslint'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-})
-
-export default [...compat.extends('@rocketseat/eslint-config/node')]
+export default ts.config(
+  js.configs.recommended,
+  ...ts.configs.recommended,
+  prettierConfig,
+  {
+    files: ['**/*.js', '**/*.ts'],
+    plugins: {
+      prettier,
+      import: importPlugin,
+      unicorn,
+    },
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+      sourceType: 'module',
+      ecmaVersion: 'latest',
+      parserOptions: {
+        parser: {
+          ts: '@typescript-eslint/parser',
+        },
+      },
+    },
+    rules: {
+      'unicorn/filename-case': ['error', { case: 'kebabCase' }],
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        { prefer: 'type-imports' },
+      ],
+      'prettier/prettier': [
+        'error',
+        {
+          printWidth: 80,
+          tabWidth: 2,
+          singleQuote: true,
+          trailingComma: 'all',
+          arrowParens: 'always',
+          semi: false,
+        },
+      ],
+      'import/order': [
+        'error',
+        {
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            ['parent', 'sibling', 'index'],
+          ],
+          pathGroups: [
+            {
+              pattern: '@/**/**',
+              group: 'internal',
+              position: 'before',
+            },
+          ],
+          pathGroupsExcludedImportTypes: ['builtin'],
+          alphabetize: {
+            order: 'asc',
+            caseInsensitive: true,
+          },
+          'newlines-between': 'never',
+        },
+      ],
+      'object-shorthand': ['error', 'always'],
+      'no-useless-return': 'error',
+      'linebreak-style': ['error', 'unix'],
+    },
+    settings: {
+      'import/resolver': {
+        node: {
+          extensions: ['.ts'],
+        },
+      },
+    },
+  },
+  {
+    ignores: ['**/node_modules/', '**/dist/'],
+  },
+)

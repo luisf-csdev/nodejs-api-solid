@@ -1,14 +1,10 @@
-import { Prisma } from '@prisma/client'
+import type { Prisma, User as PrismaUser } from '@prisma/client'
 
-export type User = {
-  name: string
-  id: string
-  email: string
-  passwordHash: string
-  createdAt: Date
-}
+export type UserCreateInput = Prisma.UserCreateInput
+
+export type User = PrismaUser
 
 export type UsersRepository = {
-  create(data: Prisma.UserCreateInput): Promise<User>
+  create(data: UserCreateInput): Promise<User>
   findByEmail(email: string): Promise<User | null>
 }
