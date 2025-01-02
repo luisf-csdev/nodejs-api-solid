@@ -2,12 +2,12 @@ import bcryptjs from 'bcryptjs'
 import type { User, UsersRepository } from '@/repositories/users-repository'
 import { InvalidCredentialsError } from './errors/invalid-credentials-error'
 
-export type AuthenticateUseCaseRequest = {
+export interface AuthenticateUseCaseRequest {
   email: string
   password: string
 }
 
-export type AuthenticateUseCaseResponse = {
+export interface AuthenticateUseCaseResponse {
   user: User
 }
 

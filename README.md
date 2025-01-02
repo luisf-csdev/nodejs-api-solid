@@ -4,9 +4,9 @@ GymPass style app.
 
 ## FRs (Functional requirements)
 
-- [ ] It should be able to sign up;
-- [ ] It should be able to authenticate;
-- [ ] It should be able to get the authenticated user profile;
+- [x] It should be able to sign up;
+- [x] It should be able to authenticate;
+- [x] It should be able to get the authenticated user profile;
 - [ ] It should be able to get the amount of check-ins made by the authenticated user;
 - [ ] It should be able to obtain the user's check-in history;
 - [ ] It should be able to search for nearby gyms;
