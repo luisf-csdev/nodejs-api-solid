@@ -11,12 +11,12 @@ import type {
 export class InMemoryGymsRepository implements GymsRepository {
   public items: Gym[] = []
 
-  async findById(id: string): Promise<Gym | null> {
+  async findById(id: string) {
     const gym = this.items.find((item) => item.id === id)
     return gym ?? null
   }
 
-  async findManyNearby(params: FindManyNearbyParams): Promise<Gym[]> {
+  async findManyNearby(params: FindManyNearbyParams) {
     const gyms = this.items.filter((item) => {
       const distance = getDistanceBetweenCoordinates(
         {
@@ -35,7 +35,7 @@ export class InMemoryGymsRepository implements GymsRepository {
     return gyms
   }
 
-  async searchMany(query: string, page: number): Promise<Gym[]> {
+  async searchMany(query: string, page: number) {
     const gyms = this.items
       .filter((item) => item.title.includes(query))
       .slice((page - 1) * 20, page * 20)
@@ -43,7 +43,7 @@ export class InMemoryGymsRepository implements GymsRepository {
     return gyms
   }
 
-  async create(data: GymCreateInput): Promise<Gym> {
+  async create(data: GymCreateInput) {
     const gym: Gym = {
       id: data.id ?? randomUUID(),
       title: data.title,

@@ -10,7 +10,7 @@ describe('Fetch User Check-in History Use Case', () => {
 
   const DISTANT_GYM_ID = 'gym-02'
   const DISTANT_GYM_LATITUDE = 25.809581
-  const DISTANTE_GYM_LONGITUDE = -80.214979
+  const DISTANT_GYM_LONGITUDE = -80.214979
 
   let gymsRepository: InMemoryGymsRepository
   let sut: SearchGymsUseCase
@@ -36,7 +36,7 @@ describe('Fetch User Check-in History Use Case', () => {
       description: '',
       phone: '',
       latitude: new Decimal(DISTANT_GYM_LATITUDE),
-      longitude: new Decimal(DISTANTE_GYM_LONGITUDE),
+      longitude: new Decimal(DISTANT_GYM_LONGITUDE),
     })
 
     const { gyms } = await sut.execute({
