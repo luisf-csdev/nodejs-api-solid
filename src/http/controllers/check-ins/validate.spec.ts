@@ -14,7 +14,7 @@ describe('Validate Check-in (e2e)', () => {
   })
 
   it('should be able to validate a check-in', async () => {
-    const { token } = await createAndAuthenticateUser(app)
+    const { token } = await createAndAuthenticateUser(app, true)
 
     const gymLatitude = 25.809581
     const gymLongitude = -80.208504
