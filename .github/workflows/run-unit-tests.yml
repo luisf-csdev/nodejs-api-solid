@@ -23,7 +23,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm i
+        run: pnpm install
 
       - name: Run Unit Tests
         run: pnpm test
