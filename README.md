@@ -21,12 +21,12 @@ GymPass style app.
 - [x] The user must not make 2 check-ins on the same day;
 - [x] The user must not make a check-in if they aren't near (100m) of the gym;
 - [x] The check must only be validated until 20 minutes after created;
-- [ ] The check-in must only be validated by administrators;
-- [ ] The gym must only be registered by administrators;
+- [x] The check-in must only be validated by administrators;
+- [x] The gym must only be registered by administrators;
 
 ## NFRs (Non-functional requirements)
 
 - [x] The user's password should be encrypted;
 - [x] The application's data should be persisted in a PostgresSQL database;
 - [x] All data lists should be paginated with 20 items per page;
-- [ ] The user should be identified by a JWT (JSON Web Token);
+- [x] The user should be identified by a JWT (JSON Web Token);
